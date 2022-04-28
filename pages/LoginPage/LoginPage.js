@@ -5,14 +5,11 @@ import logo from '../../assets/logo/Logo.svg'
 import Link from 'next/link'
 import { FormSchema } from '../../constants/yupSchema'
 import styles from './login.module.scss'
-import react,{useState} from 'react'
-
+import react, { useState } from 'react'
 
 function LoginPage() {
+  const [openError, setOpenError] = useState(false)
 
-
-  const [openError,setOpenError ] =useState(false);
-  
   return (
     <div className={styles.container}>
       <div className={styles.fixed}>
@@ -34,7 +31,14 @@ function LoginPage() {
         }}
         validationSchema={FormSchema}
       >
-        {({ values, handleChange, handleSubmit, errors, touched,handleBlur }) => (
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          errors,
+          touched,
+          handleBlur
+        }) => (
           <div className={styles.formContainer}>
             <div className={styles.operation}>
               <div className={styles.logo}>
@@ -49,7 +53,13 @@ function LoginPage() {
                   </p>
                 </div>
 
-                <div className={ (touched.email && values.email!== "" && errors.email) ? `${styles.wrapper} ${styles.error}` : styles.wrapper}>
+                <div
+                  className={
+                    touched.email && values.email !== '' && errors.email
+                      ? `${styles.wrapper} ${styles.error}`
+                      : styles.wrapper
+                  }
+                >
                   <label className={styles.label}>Email</label>
                   <input
                     id="email"
@@ -60,13 +70,20 @@ function LoginPage() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   ></input>
-
                 </div>
-                {errors.email && touched.email && openError && 
+                {errors.email && touched.email && openError && (
                   <span className={styles.errors}>{errors.email}</span>
-                }
+                )}
 
-                <div className={ (touched.password && values.password!== "" && errors.password) ? `${styles.wrapper} ${styles.error}` : styles.wrapper}>
+                <div
+                  className={
+                    touched.password &&
+                    values.password !== '' &&
+                    errors.password
+                      ? `${styles.wrapper} ${styles.error}`
+                      : styles.wrapper
+                  }
+                >
                   <label className={styles.label}>Şifre</label>
                   <input
                     id="password"
@@ -78,9 +95,9 @@ function LoginPage() {
                     onBlur={handleBlur}
                   ></input>
                 </div>
-                {errors.password && touched.password && openError && 
+                {errors.password && touched.password && openError && (
                   <span className={styles.errors}>{errors.password}</span>
-                }
+                )}
 
                 <span className={styles.lostPassword}>Şifremi Unuttum</span>
 
@@ -89,7 +106,10 @@ function LoginPage() {
                     className={styles.button}
                     text="Giriş"
                     type="submit"
-                    onClick={()=>{setOpenError(true);handleSubmit();}}
+                    onClick={() => {
+                      setOpenError(true)
+                      handleSubmit()
+                    }}
                   >
                     Giriş
                   </button>

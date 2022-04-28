@@ -5,8 +5,11 @@ import logo from '../../assets/logo/Logo.svg'
 import Link from 'next/link'
 import { FormSchema } from '../../constants/yupSchema'
 import  styles from  './register.module.scss'
+import react, { useState } from 'react'
 
 function RegisterPage() {
+  const [openError, setOpenError] = useState(false)
+
   return (
     
     <div className={ styles.container}>
@@ -56,9 +59,9 @@ function RegisterPage() {
                     onBlur={handleBlur}
                   ></input>
                 </div>
-                {errors.email && touched.email && openError && 
-                  <span className={ styles.error}>{errors.email}</span>
-                }
+                {errors.email && touched.email && openError &&( 
+                  <span className={styles.error}>{errors.email}</span>
+                )}
 
                 <div className={ (touched.password && values.password!== "" && errors.password) ? `${styles.wrapper} ${styles.error}` : styles.wrapper}>
                   <label className={styles.label}>Şifre</label>
