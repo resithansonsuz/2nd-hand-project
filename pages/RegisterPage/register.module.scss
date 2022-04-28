@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Oxygen&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
+
+
   .container {
     display: flex;
     flex-direction: row;
@@ -133,6 +131,13 @@
               cursor: pointer;
             }
           }
+          .errors {
+            display: flex;
+            align-self: flex-start;
+            margin-left: 72px;
+            margin-bottom: 3.4px;
+            color: #ee6356;
+          }
 
           .noAccount {
             display: flex;
@@ -156,4 +161,4 @@
       }
     }
   }
-}
+  

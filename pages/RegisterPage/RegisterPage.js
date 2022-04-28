@@ -4,13 +4,15 @@ import loginpic from '../../assets/images/Form.png'
 import logo from '../../assets/logo/Logo.svg'
 import Link from 'next/link'
 import { FormSchema } from '../../constants/yupSchema'
+import  styles from  './register.module.scss'
 
-function LoginPage() {
+function RegisterPage() {
   return (
-    <div className="container">
-      <div className="fixed">
+    
+    <div className={ styles.container}>
+      <div className={ styles.fixed}>
         <Image
-          className="loginpic"
+          className={styles.loginpic}
           src={loginpic}
           alt="Website login image"
           max-width={835}
@@ -27,45 +29,51 @@ function LoginPage() {
         }}
         validationSchema={FormSchema}
       >
-        {({ values, handleChange, handleSubmit, alert }) => (
-          <div class="formContainer">
-            <div class="operation">
-              <div className="logo">
+        {({ values, handleChange, handleSubmit, errors, touched }) => (
+          <div class={styles.formContainer}>
+            <div class={ styles.operation}>
+              <div className={ styles.logo}>
                 <Image src={logo} />
               </div>
 
-              <div className="form">
-                <div class="title">
-                  <h1 className="formTitle">Üye Ol</h1>
-                  <p className="formSubTitle">
+              <div className={ styles.form}>
+                <div class={ styles.title}>
+                  <h1 className={ styles.formTitle}>Üye Ol</h1>
+                  <p className={ styles.formSubTitle}>
                     Fırsatlardan yararlanmak için üye ol!
                   </p>
                 </div>
 
-                <div class="wrapper">
-                  <label className="label">Email</label>
+                <div class={ styles.wrapper}>
+                  <label className={ styles.label}>Email</label>
                   <input
                     id="email"
                     type="text"
                     name="email"
                     placeholder="Email@example.com"
-                    value={values.name}
+                    value={values.email}
                     onChange={handleChange}
                   ></input>
                 </div>
+                {errors.email && touched.email && (
+                  <span className={styles.errors}>{errors.email}</span>
+                )}
 
-                <div class="wrapper">
-                  <label className="label">Şifre</label>
+                <div class={ styles.wrapper}>
+                  <label className={styles.label}>Şifre</label>
                   <input
                     id="password"
                     name="password"
                     type="password"
                     placeholder="Password"
-                    value={values.name}
+                    value={values.password}
                     onChange={handleChange}
                   ></input>
                 </div>
-                <div class="submit">
+                {errors.password && touched.password && (
+                  <span className={styles.errors}>{errors.password}</span>
+                )}
+                <div class={ styles.submit}>
                   <button
                     text="Giriş"
                     className="button"
@@ -76,7 +84,7 @@ function LoginPage() {
                   </button>
                 </div>
 
-                <div className="noAccount">
+                <div className={ styles.noAccount}>
                   Hesabın var mı?{' '}
                   <Link href="/LoginPage/LoginPage">
                     <a>Giriş Yap</a>
@@ -90,4 +98,4 @@ function LoginPage() {
     </div>
   )
 }
-export default LoginPage
+export default RegisterPage

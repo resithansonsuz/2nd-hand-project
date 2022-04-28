@@ -4,12 +4,14 @@ export const FormSchema = yup.object().shape({
   email: yup
     .string()
     .email("Lütfen geçerli bir eposta adresi giriniz.")
-    .required("Eposta alanı zorunludur."),
+    .required("*Eposta alanı zorunludur.*"),
 
   password: yup
     .string()
-    .typeError("Her karakteri kullanamazsın. Sadece @/./+/-/_ kullanabilirsin")
-    .min(8, "Şifreniz 8 karakterden az olamaz")
-    .max(20, "Şifreniz 20 karakterden fazla olamaz")
-    .required("Şifre alanı zorunludur."),
+    .min(8,"Şifre en az 8 karakter olmalıdır")
+    .max(20,"Şifre en fazla 20 karakter olmalıdır")
+    .required("*Şifre alanı zorunludur*")
+    .matches(/^(?=.*[a-z])/, "Şifre en az bir küçük harf içermelidir")
+    .matches(/^(?=.*[A-Z])/, "Şifre en az bir büyük harf içermelidir")
+    .matches(/^(?=.*[0-9])/, "Şifre en az bir rakam içermelidir"),
 });
