@@ -1,5 +1,3 @@
-
-
 .container {
   display: flex;
   flex-direction: row;
@@ -109,6 +107,13 @@
               background: #f0f8ff;
               outline: none !important;
             }
+          }
+        }
+        .error {
+          input[type='text'],
+          input[type='password'] {
+            border: 1px solid #f77474;
+            background: #fff2f2;
           }
         }
         .lostPassword {

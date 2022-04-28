@@ -29,7 +29,7 @@ function RegisterPage() {
         }}
         validationSchema={FormSchema}
       >
-        {({ values, handleChange, handleSubmit, errors, touched }) => (
+        {({ values, handleChange, handleSubmit, errors, touched,handleBlur }) => (
           <div class={styles.formContainer}>
             <div class={ styles.operation}>
               <div className={ styles.logo}>
@@ -44,7 +44,7 @@ function RegisterPage() {
                   </p>
                 </div>
 
-                <div class={ styles.wrapper}>
+                <div className={ (touched.email && values.email!== "" && errors.email) ? `${styles.wrapper} ${styles.error}` : styles.wrapper}>
                   <label className={ styles.label}>Email</label>
                   <input
                     id="email"
@@ -53,13 +53,14 @@ function RegisterPage() {
                     placeholder="Email@example.com"
                     value={values.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                   ></input>
                 </div>
-                {errors.email && touched.email && (
-                  <span className={styles.errors}>{errors.email}</span>
-                )}
+                {errors.email && touched.email && openError && 
+                  <span className={ styles.error}>{errors.email}</span>
+                }
 
-                <div class={ styles.wrapper}>
+                <div className={ (touched.password && values.password!== "" && errors.password) ? `${styles.wrapper} ${styles.error}` : styles.wrapper}>
                   <label className={styles.label}>Şifre</label>
                   <input
                     id="password"
@@ -68,11 +69,12 @@ function RegisterPage() {
                     placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                   ></input>
                 </div>
-                {errors.password && touched.password && (
+                {errors.password && touched.password && openError && 
                   <span className={styles.errors}>{errors.password}</span>
-                )}
+                }
                 <div class={ styles.submit}>
                   <button
                     text="Giriş"
