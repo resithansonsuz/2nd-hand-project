@@ -1,0 +1,41 @@
+@import 'react-toastify/dist/ReactToastify.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Oxygen&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Nunito, sans-serif;
+}
+
+.Toastifytoast-container--top-right {
+  top: 90px !important;
+  right: 0;
+  width: 321px;
+  height: 60px;
+  margin: 0px 10px;
+  @media only screen and (max-width: 768px) {
+    & {
+      top: 10px !important;
+      width: 355px;
+    }
+  }
+}
+
+.Toastifytoast-theme--colored.Toastifytoast--error,
+.Toastifytoast-theme--colored.Toastifytoast--success {
+  font-size: 16px !important;
+  line-height: 23px;
+  box-shadow: 0px 3px 12px #1e36482e;
+  border-radius: 8px;
+}
+.Toastifytoast-theme--colored.Toastifytoast--success {
+  background-color: #f1fff0;
+  color: #46af32 !important;
+}
+.Toastifytoast-theme--colored.Toastifytoast--error {
+  background-color: #ffe5e5 ;
+  color: #f77474 !important;
+}
+.Toastifyclose-button {
+  display: none;
+}

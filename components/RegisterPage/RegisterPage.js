@@ -4,11 +4,16 @@ import loginpic from '../../assets/images/Form.png'
 import logo from '../../assets/logo/Logo.svg'
 import Link from 'next/link'
 import { FormSchema } from '../../constants/yupSchema'
-import styles from './login.module.scss'
+import styles from './register.module.scss'
 import react, { useState } from 'react'
+import { useAuth } from '../../context/auth'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
-function LoginPage() {
+function RegisterPage() {
   const [openError, setOpenError] = useState(false)
+  const { UserRegister } = useAuth()
+  const router = useRouter()
 
   return (
     <div className={styles.container}>
@@ -26,8 +31,35 @@ function LoginPage() {
           email: '',
           password: ''
         }}
-        onSubmit={(values) => {
-          console.log(values)
+        onSubmit={async (values) => {
+          const status = await UserRegister(values.email, values.password)
+          switch (status) {
+            case 400:
+              toast.error('Emaile ait kayıtlı bir kullanıcı bulunmaktadır. ', {
+                position: 'top-right',
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+              })
+              break
+
+            default:
+              toast.success(
+                'Kaydınızı başarıyla yaptınız ana sayfaya yönlendiriliyorsunuz.',
+                {
+                  position: 'top-right',
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true
+                }
+              )
+              setTimeout(() => {
+                router.push('/')
+              }, 4000)
+              break
+          }
         }}
         validationSchema={FormSchema}
       >
@@ -47,9 +79,9 @@ function LoginPage() {
 
               <div className={styles.form}>
                 <div className={styles.title}>
-                  <h1 className={styles.formTitle}>Giriş Yap</h1>
+                  <h1 className={styles.formTitle}>Üye Ol</h1>
                   <p className={styles.formSubTitle}>
-                    Fırsatlardan yararlanmak için giriş yap!
+                    Fırsatlardan yararlanmak için üye ol!
                   </p>
                 </div>
 
@@ -66,13 +98,13 @@ function LoginPage() {
                     type="text"
                     name="email"
                     placeholder="Email@example.com"
-                    value={values.name}
+                    value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   ></input>
                 </div>
                 {errors.email && touched.email && openError && (
-                  <span className={styles.errors}>{errors.email}</span>
+                  <span className={styles.error}>{errors.email}</span>
                 )}
 
                 <div
@@ -90,7 +122,7 @@ function LoginPage() {
                     name="password"
                     type="password"
                     placeholder="Password"
-                    value={values.name}
+                    value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   ></input>
@@ -98,27 +130,24 @@ function LoginPage() {
                 {errors.password && touched.password && openError && (
                   <span className={styles.errors}>{errors.password}</span>
                 )}
-
-                <span className={styles.lostPassword}>Şifremi Unuttum</span>
-
                 <div className={styles.submit}>
                   <button
-                    className={styles.button}
                     text="Giriş"
+                    className="button"
                     type="submit"
                     onClick={() => {
                       setOpenError(true)
                       handleSubmit()
                     }}
                   >
-                    Giriş
+                    Üye Ol
                   </button>
                 </div>
 
                 <div className={styles.noAccount}>
-                  Hesabın yok mu?{' '}
-                  <Link href="/RegisterPage/RegisterPage">
-                    <a>Üye Ol</a>
+                  Hesabın var mı?{' '}
+                  <Link href="/login">
+                    <a>Giriş Yap</a>
                   </Link>
                 </div>
               </div>
@@ -129,4 +158,4 @@ function LoginPage() {
     </div>
   )
 }
-export default LoginPage
+export default RegisterPage

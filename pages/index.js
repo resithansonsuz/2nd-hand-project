@@ -13,7 +13,7 @@ function HomePage() {
            />
       </div> */}
       <div>
-      <Link href="../LoginPage/LoginPage">
+      <Link href="/login">
         <a>Giriş Yap</a>
       </Link>
       </div>
