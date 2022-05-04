@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { Formik } from 'Formik'
 import loginpic from '../../assets/images/Form.png'
-import logo from '../../assets/logo/Logo.svg'
+import logo from '../../assets/icon/Logo.svg'
 import Link from 'next/link'
 import { FormSchema } from '../../constants/yupSchema'
 import styles from './register.module.scss'
-import react, { useState } from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../../context/auth'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
@@ -22,8 +22,6 @@ function RegisterPage() {
           className={styles.loginpic}
           src={loginpic}
           alt="Website login image"
-          max-width={835}
-          max-height={1080}
         />
       </div>
       <Formik

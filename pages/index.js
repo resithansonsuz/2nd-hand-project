@@ -1,25 +1,15 @@
-import Link from 'next/link'
-import Image from 'next/image'
-/* import logo from '../../assets/logo/Logo.svg' */
+import HomePage from '../components/HomePage/HomePage'
+import { ProductsContext, ProductsProvider } from '../context/product'
 
-function HomePage() {
+
+function Home() {
   return (
     <>
-      <div>Selam burası anasayfa</div>
-      <nav>
-      {/* <div className="logo">
-           <Image
-           src={logo}
-           />
-      </div> */}
-      <div>
-      <Link href="/login">
-        <a>Giriş Yap</a>
-      </Link>
-      </div>
-      </nav>
+    <ProductsProvider>
+      <HomePage/>
+      </ProductsProvider>
     </>
   )
 }
 
-export default HomePage
+export default Home

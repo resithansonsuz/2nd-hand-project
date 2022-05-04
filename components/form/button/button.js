@@ -1,9 +1,12 @@
-const Form = ({className,text,type,onClick}) =>
- <button
-className={className}
-type={type}
-onClick={onClick}
->
-{text}
-</button>
-export default Form
+const button = ({ className, text, onClick,submit }) => {
+  return (
+    <button
+      className={className}
+      type={submit ? 'submit' : 'button'}
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  )
+}
+export default button
