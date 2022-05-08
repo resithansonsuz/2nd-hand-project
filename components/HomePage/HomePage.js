@@ -4,34 +4,41 @@ import Plus from '../../assets/icon/Plus.svg'
 import User from '../../assets/icon/User.svg'
 import homebanner from '../../assets/images/Banner.png'
 import { useProduct } from '../../context/product'
+import { useAuth } from '../../context/auth'
 import styles from './home.module.scss'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 function HomePage() {
   //verileri tutacak olan hooks
   const [categories, setCategory] = useState([])
   const [products, setProduct] = useState([])
   const [active, setActive] = useState(0)
-
+  const [token, setToken] = useState()
   const { Products, Categories } = useProduct()
+  const { checkUser } = useAuth()
+  const router = useRouter()
 
   //Bu fonksiyon, ana sayfa her açıldığında ve category değiştiğinde çalışacak.
+
   useEffect(() => {
     getData()
+    const tokens = checkUser()
+    setToken(tokens)
   }, [])
 
   const getProduct = async (id) => {
     setActive(id)
-    let urunler = await Products(id)
-    setProduct(urunler)
+    const products = await Products(id)
+    setProduct(products)
   }
+  
 
   const getData = async () => {
-    const urunler = await Products()
-    setProduct(urunler)
-
-    const kategoriler = await Categories()
-    setCategory(kategoriler)
+    const products = await Products()
+    setProduct(products)
+    const categories = await Categories()
+    setCategory(categories)
   }
 
   return (
@@ -42,14 +49,24 @@ function HomePage() {
             <div className={styles.logo}>
               <Image src={logo} />
             </div>
-            <div className={styles.buttons}>
-              <button>
-                <Image src={Plus} /> Ürün Ekle
-              </button>
-              <button>
-                <Image src={User}  /> Giriş Yap
-              </button>
-            </div>
+
+            {token  ? (
+              <div className={styles.buttons}>
+                <button>
+                  <Image src={Plus} /> Ürün Ekle
+                </button>
+
+                <button onClick={() => router.push('/')}>
+                  <Image src={User} /> Hesabım
+                </button>
+              </div>
+            ) : (
+              <div className={styles.buttons}>
+                <button onClick={() => router.push('/login')}>
+                  <Image src={User} /> Giriş Yap
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.main}>
@@ -81,7 +98,13 @@ function HomePage() {
             <div className={styles.productElements}>
               {products.length > 0 &&
                 products?.map((item, index) => (
-                  <div key={index} className={styles.productElement}>
+                  <div
+                    key={index}
+                    className={styles.productElement}
+                    onClick={() => {
+                      router.push('/' + item.id)
+                    }}
+                  >
                     <div className={styles.productElementImage}>
                       <img
                         className={

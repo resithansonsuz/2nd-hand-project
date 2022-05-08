@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { createContext, useContext,useState,useEffect } from 'react'
-import { string } from 'yup'
+
 
 
 const ProductsContext = createContext()
@@ -8,43 +8,56 @@ const ProductsContext = createContext()
 
 const ProductsProvider = ({ children }) => {
 
-  const Products = (id) => {
+  const Products = async (id) => {
 
     let URL ="https://bootcamp.akbolat.net/products";
     if(id){
      URL= URL+"/?category=" + id
     }
-    return axios
-      .get(URL)
-      .then((response) => {
-        return response.data
-      })
-      .catch((error) => {
-        return error.response.status
-      })
+    try {
+      const response = await axios
+        .get(URL)
+      return response.data
+    } catch (error) {
+      return error.response.status
+    }
   }
 
-  const Categories = () => {
-    return axios
-      .get('https://bootcamp.akbolat.net/categories')
-      .then((response) => {
-        const res=response.data;
-        res.unshift({
-          id:0,name:"Hepsi"
-        })
-        
-        return res
+  const Product = async (id) => {
+
+    let URL ="https://bootcamp.akbolat.net";
+    if(id){
+     URL= URL+"/products/" +id
+    }
+    try {
+      const response = await axios
+        .get(URL)
+      return response.data
+    } catch (error) {
+      return error.response.status
+    }
+  }
+
+  const Categories = async () => {
+    try {
+      const response = await axios
+        .get('https://bootcamp.akbolat.net/categories')
+      const res = response.data
+      res.unshift({
+        id: 0, name: "Hepsi"
       })
-      .catch((error) => {
-        return error.response.status
-      })
+      return res
+    } catch (error) {
+      return error.response.status
+    }
   }
 
   return (
     <ProductsContext.Provider
       value={{
         Products,
-        Categories
+        Categories,
+        Product
       }}
     >
       {children}
@@ -55,6 +68,8 @@ const ProductsProvider = ({ children }) => {
 function useProduct() {
   return useContext(ProductsContext)
 }
+
+
 
 
 export { ProductsProvider, ProductsContext, useProduct }

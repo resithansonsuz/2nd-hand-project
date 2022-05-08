@@ -54,6 +54,7 @@
           border: none;
           border-radius: 8px;
           font: normal normal bold 15px/20px Nunito;
+          cursor: pointer;
         }
       }
     }
@@ -146,7 +147,6 @@
 
             row-gap: 10px;
             column-gap: 10px;
-            
           }
         }
 
@@ -154,6 +154,7 @@
           background-color: #ffffff;
           border-radius: 8px;
           width: 100%;
+          cursor: pointer;
 
           .productElementImage {
             display: flex;

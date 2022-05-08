@@ -1,12 +1,14 @@
 import HomePage from '../components/HomePage/HomePage'
-import { ProductsContext, ProductsProvider } from '../context/product'
-
+import { AuthProvider } from '../context/auth'
+import { ProductsProvider } from '../context/product'
 
 function Home() {
   return (
     <>
-    <ProductsProvider>
-      <HomePage/>
+      <ProductsProvider>
+        <AuthProvider>
+          <HomePage />
+        </AuthProvider>
       </ProductsProvider>
     </>
   )

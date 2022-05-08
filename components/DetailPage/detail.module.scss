@@ -1,0 +1,230 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+
+
+  @media only screen and (max-width: 600px) {
+    & {
+      flex-direction: column;
+      padding: 10px;
+    }
+  }
+  .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    align-items: center;
+
+    @media only screen and (max-width: 768px) {
+      height: 60px;
+    }
+    .headContainer {
+      display: flex;
+      width: 77.1%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .logo {
+        display: flex;
+        width: 128px;
+        height: 42px;
+
+        @media only screen and (max-width: 768px) {
+          width: 99px;
+          height: 32px;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        button {
+          display: flex;
+          width: 100px;
+          height: 40px;
+          justify-content: center;
+          align-items: center;
+          color: #4b9ce2;
+          background: #f0f8ff 0% 0% no-repeat padding-box;
+          border: none;
+          border-radius: 8px;
+          font: normal normal bold 15px/20px Nunito;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .main {
+    display: flex;
+    justify-content: center;
+    width: 77%;
+    height: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 1rem auto 0;
+    margin-bottom: 10%;
+    flex-basis: 470px;
+
+    .productPic {
+      overflow: hidden;
+      width: 34.25%;
+      height: 100%;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        border-radius: 8px;
+      }
+    }
+    .productDetail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 55%;
+
+      box-sizing: border-box;
+      margin: 0 auto 0;
+      margin-left: 10px;
+      background-color: #ffffff;
+
+      @media only screen and (max-width: 600px) {
+        & {
+          width: 100%;
+          margin-left: 10px;
+        }
+      }
+
+      .productDetailBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        padding: 0 10px;
+      }
+
+      .title {
+        font-size: 34px;
+        color: #555555;
+        margin-bottom: 20px;
+      }
+      .status {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+        .leftContent {
+          font-size: 15px;
+          font-weight: bold;
+          color: #525252;
+          width: 140px;
+          .infoAreaItem {
+            margin-bottom: 10px;
+          }
+        }
+        .rightContent {
+          font-size: 15px;
+          color: #525252;
+          .infoAreaItem {
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .price {
+        font-size: 25px;
+        font-weight: bold;
+        color: #525252;
+        margin-bottom: 5px;
+      }
+      .buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+        @media only screen and (max-width: 600px) {
+          & {
+            width: 100%;
+            padding: 10px 20px;
+            margin-bottom: 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background-color: white;
+          }
+        }
+        .buy {
+          width: 100%;
+          height: 45px;
+          border-radius: 8px;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: bold;
+          padding: 0 20px;
+          background-color: #4b9ce2;
+
+          @media only screen and (max-width: 600px) {
+            & {
+              height: 30px;
+            }
+          }
+        }
+        .offer {
+          width: 100%;
+          height: 45px;
+          border-radius: 8px;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: bold;
+          padding: 0 20px;
+          background-color: #f0f8ff;
+          color: #4b9ce2;
+
+          @media only screen and (max-width: 600px) {
+            & {
+              height: 30px;
+            }
+          }
+        }
+      }
+      .explanation {
+        .descTitle {
+          font-size: 18px;
+          font-weight: bold;
+          color: #525252;
+        }
+        .desc {
+          font-size: 15px;
+          color: #555555;
+
+          @media only screen and (max-width: 600px) {
+            & {
+              margin-bottom: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

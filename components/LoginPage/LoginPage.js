@@ -19,6 +19,7 @@ function LoginPage() {
     const checking=checkUser()
     if(checking){
       router.push('/')
+      
     }
   },[])
 
