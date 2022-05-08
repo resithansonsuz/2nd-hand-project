@@ -82,14 +82,12 @@
       overflow: hidden;
       width: 34.25%;
       height: 100%;
-      
 
       > img {
         width: 77%;
         height: 100%;
         object-fit: fill;
         border-radius: 8px;
-        
       }
     }
     .productDetail {
@@ -97,7 +95,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 45%;
+      width: 50%;
 
       box-sizing: border-box;
       margin: 0 auto 0;
@@ -108,6 +106,7 @@
         & {
           width: 100%;
           margin-left: 10px;
+          margin-right: -50px;
         }
       }
 
