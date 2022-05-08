@@ -7,8 +7,10 @@ import styles from './detail.module.scss'
 import { useRouter } from 'next/router'
 import { useProduct } from '../../context/product'
 
+
 function Detail() {
   const [product, setProduct] = useState([])
+  const [showModal, setShowModal] = useState([false])
   const router = useRouter()
   const { Product } = useProduct()
 
@@ -88,7 +90,13 @@ function Detail() {
               </div>
 
               <div className={styles.buttons}>
-                <button className={styles.buy}>Satın Al</button>
+                <button
+                  className={styles.buy}
+                  onClick={() => setShowModal(true)}
+                >
+                  Satın Al
+                </button>
+
                 <button className={styles.offer}>Teklif Ver</button>
               </div>
 

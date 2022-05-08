@@ -3,6 +3,7 @@ import { ProductsProvider } from '../context/product'
 
 
 function Details() {
+  //The detail page of the products I wrapped with product context
   return (
     <>
       <ProductsProvider>

@@ -4,6 +4,7 @@ import { ProductsProvider } from '../context/product'
 
 function Home() {
   return (
+    //The main page I wrapped with Product and Auth context
     <>
       <ProductsProvider>
         <AuthProvider>
