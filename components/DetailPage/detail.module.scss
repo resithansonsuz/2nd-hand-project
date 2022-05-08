@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   background-color: #f2f2f2;
+  position: fixed;
 
 
   @media only screen and (max-width: 600px) {
@@ -74,18 +75,21 @@
     padding: 15px;
     margin: 1rem auto 0;
     margin-bottom: 10%;
-    flex-basis: 470px;
+    overflow: auto;
+    flex-basis:auto;
 
     .productPic {
       overflow: hidden;
       width: 34.25%;
       height: 100%;
+      
 
       > img {
-        width: 100%;
+        width: 77%;
         height: 100%;
         object-fit: fill;
         border-radius: 8px;
+        
       }
     }
     .productDetail {
@@ -93,7 +97,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 55%;
+      width: 45%;
 
       box-sizing: border-box;
       margin: 0 auto 0;
