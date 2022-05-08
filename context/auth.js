@@ -4,6 +4,7 @@ import React, { createContext, useContext } from 'react'
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
+   //Context API that holds and wraps functions that send user registration and user login operations to the API
   const UserRegister = (email, password) => {
     return axios
       .post('https://bootcamp.akbolat.net/auth/local/register', {

@@ -11,6 +11,10 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 
 function LoginPage() {
+
+  
+
+  //hooks that will hold the data
   const [openError, setOpenError] = useState(false)
   const { UserLogin,checkUser } = useAuth()
   const router = useRouter()

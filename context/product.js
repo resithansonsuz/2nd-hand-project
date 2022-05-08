@@ -7,6 +7,7 @@ const ProductsContext = createContext()
 
 
 const ProductsProvider = ({ children }) => {
+  //Context API that holds and wraps functions that pull products and categories from the API in detail for each product
 
   const Products = async (id) => {
 

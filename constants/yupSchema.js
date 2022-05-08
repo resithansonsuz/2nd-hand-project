@@ -1,6 +1,8 @@
 import * as yup from "yup";
 export const FormSchema = yup.object().shape({
 
+  //yup scheme, which allows writing e-mail and password according to certain rules
+
   email: yup
     .string()
     .email("Lütfen geçerli bir eposta adresi giriniz.")

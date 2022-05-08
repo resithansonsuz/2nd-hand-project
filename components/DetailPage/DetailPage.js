@@ -9,6 +9,10 @@ import { useProduct } from '../../context/product'
 
 
 function Detail() {
+
+  //The component of the product detail page that gives detailed information about the products holding the names, prices and pictures of the products and several such information.
+
+  //hooks that will hold the data
   const [product, setProduct] = useState([])
   const [showModal, setShowModal] = useState([false])
   const router = useRouter()
@@ -19,9 +23,9 @@ function Detail() {
   }, [])
 
   const getData = async () => {
+    //My function that will display the details of the products
     const id = router.query.id
     const product = await Product(id)
-    console.log(product)
     setProduct(product)
   }
 

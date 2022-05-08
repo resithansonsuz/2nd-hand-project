@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 function HomePage() {
-  //verileri tutacak olan hooks
+  //hooks that will hold the data
   const [categories, setCategory] = useState([])
   const [products, setProduct] = useState([])
   const [active, setActive] = useState(0)
@@ -19,7 +19,7 @@ function HomePage() {
   const { checkUser } = useAuth()
   const router = useRouter()
 
-  //Bu fonksiyon, ana sayfa her açıldığında ve category değiştiğinde çalışacak.
+  //This function will run every time the home page is opened and the category changes.
 
   useEffect(() => {
     getData()
