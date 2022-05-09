@@ -35,7 +35,7 @@ To Run Test Suite:
 
 To Start Server:
 
-`start`: `npm run dev`
+`start:` `npm run dev`
 
 To Visit App:
 
