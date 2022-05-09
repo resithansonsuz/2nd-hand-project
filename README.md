@@ -6,7 +6,7 @@ Built with React, Next.js, Context-API, axios, Sass, and Toastify. It is a secon
 
 <hr>
 
-The live version of the project is the link here <a href="" target="_blank">Click</a> 
+The live version of the project is the link here <a href="https://2nd-hand-project.vercel.app/" target="_blank">Click</a> 
 
 <hr>
 
