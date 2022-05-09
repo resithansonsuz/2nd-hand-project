@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Formik } from 'Formik'
+import { Formik } from 'formik'
 import loginpic from '../../assets/images/Form.png'
 import logo from '../../assets/icon/Logo.svg'
 import Link from 'next/link'
