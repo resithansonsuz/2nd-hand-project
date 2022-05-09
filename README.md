@@ -27,15 +27,15 @@ Clone down this repository. You will need `node`, `npm` and `yarn` installed glo
 
 Installation:
 
-`yarn`  
+`npm`  
 
 To Run Test Suite:  
 
-`yarn test`  
+`npm test`  
 
 To Start Server:
 
-`yarn start`  
+'start': 'npm run dev' 
 
 To Visit App:
 
